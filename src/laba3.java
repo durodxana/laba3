@@ -1,8 +1,13 @@
 /**
  * Created by durodxana on 13.05.2016.
  */
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
+import java.lang.String;
+import java.io.IOException;
+import java.util.regex.*;
+
 
 public class laba3 {
     public static String read(String filename) throws FileNotFoundException {
@@ -29,7 +34,7 @@ public class laba3 {
         return ab.toString();
     }
     //}
-    private static String filename = "C:\\Users\\Student\\Desktop\\slova.txt";
+    private static String filename = "C:\\Users\\durodxana\\IdeaProjects\\laba3\\slova.txt";
 
 
     public static void main (String [] args ) throws FileNotFoundException {
@@ -57,7 +62,22 @@ public class laba3 {
             System.out.println(m_nar.group());
             k_nar++;
         }
+        System.out.println("______");
+        System.out.println("Количество наречий: " +k_nar);
+        System.out.println();
 
+
+        Pattern pr = Pattern.compile("\\b[А-я]+([ое]му|[ое]го|[ми]й|[ую]ю|ый)\\b");
+        Matcher m_pr = pr.matcher(textFromFile);
+        int k_pr = 0;
+        while (m_pr.find())
+        {
+            System.out.println(m_pr.group());
+            k_pr++;
+        }
+        System.out.println ( "__________") ;
+        System.out.println(" Количество прилагательных:  "+k_pr );
+        System.out.println();
 
     }
 }
